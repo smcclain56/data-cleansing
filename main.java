@@ -1,13 +1,31 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) throws FileNotFoundException{
-        String fileName = "src/shmeeplesoft.raw.txt";
-        File file = new File(fileName);
-        readFile(file);
+        System.out.println("========================= Welcome to Data Cleanser ==========================");
+        Scanner scan = new Scanner(System.in);
+        String filename;
+        try {
+            do {
+                System.out.println("\nPlease enter path for text file (type 'exit' to quit program): ");
+                filename = scan.nextLine();
+                if(!filename.equals("exit")) {
+                    File file = new File(filename);
+                    System.out.println();
+                    System.out.println("Generating SQL statements...");
+                    readFile(file);
+                }
+            } while (!filename.equals("exit"));
 
+            // print exit message
+            System.out.println("Exiting... bye.");
+            System.exit(0);
+        }catch(InputMismatchException e) {
+            throw new InputMismatchException();
+        }
     }
 
     /*
