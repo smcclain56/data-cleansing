@@ -10,7 +10,7 @@ public class main {
         String filename;
         try {
             do {
-                System.out.println("\nPlease enter path for text file (type 'exit' to quit program): ");
+                System.out.println("\nPlease enter the path for the text file (type 'exit' to quit program): ");
                 filename = scan.nextLine();
                 if(!filename.equals("exit")) {
                     File file = new File(filename);
